@@ -7,15 +7,24 @@
             <th>Categoria</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Compra</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor=" let game of games" [ngClass]="{'clearance': game.clearance}">
-            <td ><img [src]="game.image" [alt]="game.image" width="150"></td>
+            <td ><img class="img-thumbnail" [src]="game.image" [alt]="game.image" width="100"></td>
             <td>{{game.name}}</td>
             <td>{{game.description}}</td>
             <td>{{game.price | currency}}</td>
-            <td><span class="badge badge-warning" *ngIf="game.stock==0">SIN STOCK</span></td>
+            <td><span class="badge text-bg-warning" *ngIf="game.stock==0">SIN STOCK</span></td>
+            <td> 
+                <button class="btn btn-primary btn-sm" (click)="lowerQuantity(game)">-</button>
+                <input 
+                type="text" 
+                [(ngModel)]="game.quantity"
+                (keyup)="changeQuantity($event, game)">
+                <button class="btn btn-primary btn-sm"(click)="upQuantity(game)">+</button>
+            </td>
         </tr>
     </tbody>
 </table>

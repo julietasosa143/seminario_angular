@@ -16,15 +16,17 @@ export class GameListComponent implements OnInit{
     price: 399000,
     stock: 3,
     image: "assets/img/zombiecide.jpg",
-    clearance: false
+    clearance: false,
+    quantity: 0
   },
   {
     name : "Bunny Kingdom",
     description :"Estrategia Territorial de Fantasía Animal",
     price: 175000,
-    stock : 2,
+    stock : 0,
     image: "assets/img/bunny_kingdom.jpg",
-    clearance: false
+    clearance: false,
+    quantity: 0
   },
   {
     name: "Glooomhaven",
@@ -32,7 +34,8 @@ export class GameListComponent implements OnInit{
     price: 160000,
     stock: 5,
     image: "assets/img/gloomhaven.jpg",
-    clearance: true
+    clearance: true,
+    quantity: 0
   },
   {
     name: "Hero Quest",
@@ -40,12 +43,26 @@ export class GameListComponent implements OnInit{
     price: 250000,
     stock: 3,
     image: "assets/img/heroquest.jpg",
-    clearance: false
+    clearance: false,
+    quantity: 0
   }
   
 ]
   
 constructor(){  }
 ngOnInit():void{
+}
+upQuantity(game: Game):void{
+  if(game.stock>game.quantity){
+  game.quantity++;
+  }
+}
+lowerQuantity(game: Game):void{
+  if(game.quantity>0){
+    game.quantity--;
+  }
+}
+changeQuantity(event, game:Game):void {
+  console.log(event.key);
 }
 }
