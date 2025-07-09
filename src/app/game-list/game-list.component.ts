@@ -1,5 +1,5 @@
 import { Component , OnInit, ViewEncapsulation} from '@angular/core';
-import {Game} from './Game'
+import {Game} from './Game'; 
 @Component({
   selector: 'app-game-list',
   standalone: false,
@@ -62,7 +62,14 @@ lowerQuantity(game: Game):void{
     game.quantity--;
   }
 }
-changeQuantity(event, game:Game):void {
-  console.log(event.key);
+validateQuantity(game:Game):void{
+  if(!game.quantity || isNaN(game.quantity)){
+    game.quantity=0;
+  }
+  else if(game.quantity>game.stock){
+    game.quantity= game.stock;
+  }else if(game.quantity<game.stock){
+    game.quantity=0;
+  }
 }
 }

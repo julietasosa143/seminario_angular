@@ -1,5 +1,5 @@
 <h1>Lista de juegos</h1>
-<table class="table" >
+<table class="table text-center" >
     <thead>
         <tr>
             <th>Imagen</th>
@@ -15,15 +15,32 @@
             <td ><img class="img-thumbnail" [src]="game.image" [alt]="game.image" width="100"></td>
             <td>{{game.name}}</td>
             <td>{{game.description}}</td>
-            <td>{{game.price | currency}}</td>
-            <td><span class="badge text-bg-warning" *ngIf="game.stock==0">SIN STOCK</span></td>
+            <td>{{game.price | currency:'AR$'}}</td>
+            <td>
+                <span *ngIf="game.stock>0 ; else spanSinStock"></span>
+                <ng-template #spanSinStock>
+                    <span class="badge text-bg-warning">SIN STOCK</span>
+                </ng-template>
+            </td>
             <td> 
                 <button class="btn btn-primary btn-sm" (click)="lowerQuantity(game)">-</button>
                 <input 
-                type="text" 
+                type="number" 
                 [(ngModel)]="game.quantity"
-                (keyup)="changeQuantity($event, game)">
+                (blur)="validateQuantity(game)"
+                min="0"
+                [max]="game.stock"
+                class="form-control d-inline w-auto">
                 <button class="btn btn-primary btn-sm"(click)="upQuantity(game)">+</button>
+                <button class="btn btn-outline-primary" 
+                    [disabled]="game.quantity===0" 
+                    id="addToCart" 
+                    [ngClass]="{
+                        'btn-outline-primary': game.quantity > 0,
+                        'btn-outline-secondary text-muted': game.quantity === 0
+                      }">
+                    Agregar a carrito
+                </button>
             </td>
         </tr>
     </tbody>
