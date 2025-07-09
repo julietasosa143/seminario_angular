@@ -1,11 +1,10 @@
-import { Component , OnInit, ViewEncapsulation} from '@angular/core';
+import { Component , OnInit,} from '@angular/core';
 import {Game} from './Game'; 
 @Component({
   selector: 'app-game-list',
   standalone: false,
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.scss'],
-  encapsulation: ViewEncapsulation.None
 }) 
 export class GameListComponent implements OnInit{
 
