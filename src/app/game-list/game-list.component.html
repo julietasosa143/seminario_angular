@@ -23,24 +23,7 @@
                 </ng-template>
             </td>
             <td> 
-                <button class="btn btn-primary btn-sm" (click)="lowerQuantity(game)">-</button>
-                <input 
-                type="number" 
-                [(ngModel)]="game.quantity"
-                (blur)="validateQuantity(game)"
-                min="0"
-                [max]="game.stock"
-                class="form-control d-inline w-auto">
-                <button class="btn btn-primary btn-sm"(click)="upQuantity(game)">+</button>
-                <button class="btn btn-outline-primary" 
-                    [disabled]="game.quantity===0" 
-                    id="addToCart" 
-                    [ngClass]="{
-                        'btn-outline-primary': game.quantity > 0,
-                        'btn-outline-secondary text-muted': game.quantity === 0
-                      }">
-                    Agregar a carrito
-                </button>
+                <app-input-integer [game]="game" *ngIf="game.stock"></app-input-integer>
             </td>
         </tr>
     </tbody>

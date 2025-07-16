@@ -51,24 +51,5 @@ export class GameListComponent implements OnInit{
 constructor(){  }
 ngOnInit():void{
 }
-upQuantity(game: Game):void{
-  if(game.stock>game.quantity){
-  game.quantity++;
-  }
-}
-lowerQuantity(game: Game):void{
-  if(game.quantity>0){
-    game.quantity--;
-  }
-}
-validateQuantity(game:Game):void{
-  if(!game.quantity || isNaN(game.quantity)){
-    game.quantity=0;
-  }
-  else if(game.quantity>game.stock){
-    game.quantity= game.stock;
-  }else if(game.quantity<game.stock){
-    game.quantity=0;
-  }
-}
+
 }

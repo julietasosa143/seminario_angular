@@ -1,0 +1,24 @@
+<div class="input-group">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <button class="btn btn-primary btn-sm" (click)="lowerQuantity(game)">-</button>
+        </div>
+        <input type="text" class="text-center" [(ngModel)]="game.quantity" (keyup)="changeQuantity( game)">
+        <div class="input-group-append">
+            <button class="btn btn-primary btn-sm" (click)="upQuantity(game)"></button>
+        </div>
+    </div>
+    
+</div>
+<!--
+    <button 
+        class="btn btn-outline-primary" 
+        [disabled]="game.quantity===0" 
+        id="addToCart" 
+        [ngClass]="{
+            'btn-outline-primary': game.quantity > 0,
+            'btn-outline-secondary text-muted': game.quantity === 0
+        }">
+        Agregar a carrito
+    </button>
+    -->
