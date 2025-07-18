@@ -13,6 +13,6 @@ button#addToCart{
     border: purple;
     color: white;
 }
-td>input{
-    max-width: 60px;
+button#addToCart.unable{
+    opacity: 0.5;
 }

@@ -1,4 +1,5 @@
 import { Component , OnInit,} from '@angular/core';
+import { GameCartService } from '../game-cart.service';
 import {Game} from './Game'; 
 @Component({
   selector: 'app-game-list',
@@ -14,7 +15,8 @@ export class GameListComponent implements OnInit{
     description: "Cooperativo Apocalíptico de Supervivencia con Zombis",
     price: 399000,
     stock: 3,
-    image: "assets/img/zombiecide.jpg",
+    originalStock:3,
+    image: "assets/img/games/zombiecide.jpg",
     clearance: false,
     quantity: 0
   },
@@ -23,7 +25,8 @@ export class GameListComponent implements OnInit{
     description :"Estrategia Territorial de Fantasía Animal",
     price: 175000,
     stock : 0,
-    image: "assets/img/bunny_kingdom.jpg",
+    originalStock:0,
+    image: "assets/img/games/bunny_kingdom.jpg",
     clearance: false,
     quantity: 0
   },
@@ -32,7 +35,8 @@ export class GameListComponent implements OnInit{
     description: "Campaña epica de fantasia tactica",
     price: 160000,
     stock: 5,
-    image: "assets/img/gloomhaven.jpg",
+    originalStock:5,
+    image: "assets/img/games/gloomhaven.jpg",
     clearance: true,
     quantity: 0
   },
@@ -41,15 +45,21 @@ export class GameListComponent implements OnInit{
     description: "Clasico dungeon crawler de fantasia heroica",
     price: 250000,
     stock: 3,
-    image: "assets/img/heroquest.jpg",
+    originalStock:3,
+    image: "assets/img/games/heroquest.jpg",
     clearance: false,
     quantity: 0
   }
   
 ]
   
-constructor(){  }
+constructor(private cart : GameCartService){ }
 ngOnInit():void{
+}
+addToCart(game:Game):void{
+  this.cart.addToCart(game);
+  game.stock-= game.quantity;
+  game.quantity=0;
 }
 
 }

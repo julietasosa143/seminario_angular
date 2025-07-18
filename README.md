@@ -1,3 +1,24 @@
+# Tienda de Juegos de Mesa - Tokens & Treasures - Angular
+
+Este proyecto consiste en una aplicación desarrollada en Angular que simula una tienda de juegos de mesa. Los usuarios pueden ver un catálogo de juegos disponibles, verificar su stock, seleccionar la cantidad deseada y agregarlos a un carrito de compras.
+
+## Temática del Proyecto
+
+La aplicación representa una **tienda online de juegos de mesa**, con funcionalidades básicas de e-commerce:
+
+- Visualización de productos (juegos)
+- Carrito de compras
+- Control de stock
+- Estilo visual con Bootstrap
+
+## Datos de la Estudiante
+
+- **Nombre:** Julieta Yazmin Sosa  
+- **DNI:** 44.321.795 
+- **Sede:** Sede Tandil
+- **Email:** julietasosa143@gmail.com
+
+
 # Boardgames
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.

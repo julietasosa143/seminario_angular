@@ -17,13 +17,14 @@
             <td>{{game.description}}</td>
             <td>{{game.price | currency:'AR$'}}</td>
             <td>
-                <span *ngIf="game.stock>0 ; else spanSinStock"></span>
+                <span *ngIf="game.stock>0 ; else spanSinStock"> {{game.stock}}</span>
                 <ng-template #spanSinStock>
                     <span class="badge text-bg-warning">SIN STOCK</span>
                 </ng-template>
             </td>
             <td> 
-                <app-input-integer [game]="game" *ngIf="game.stock"></app-input-integer>
+                <app-input-integer [(quantity)]="game.quantity" [max]="game.stock" *ngIf="game.stock"></app-input-integer>
+                <button class="btn btn-sm btn-secondary" *ngIf="game.stock" [ngClass]="{'unable': game.quantity===0}" id="addToCart" (click)="addToCart(game)" >Agregar a carrito</button>
             </td>
         </tr>
     </tbody>

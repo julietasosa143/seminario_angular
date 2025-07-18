@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Game } from '../game-list/Game';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-input-integer',
@@ -10,22 +10,39 @@ import { Game } from '../game-list/Game';
 export class InputIntegerComponent implements OnInit{
   constructor(){}
 
-  @Input() game! : Game;
+  @Input() 
+  quantity!: number;
+  @Input()
+  max!:number;
+  @Output()
+  quantityChange : EventEmitter<number>= new EventEmitter<number>();
+
 
   ngOnInit():void{}
 
-  upQuantity(game: Game):void{
-    if(game.stock>game.quantity){
-    game.quantity++;
+  upQuantity():void{
+    if(this.max>this.quantity){
+    this.quantity++;
+    this.quantityChange.emit(this.quantity);
     }
   }
-  lowerQuantity(game: Game):void{
-    if(game.quantity>0){
-      game.quantity--;
+  lowerQuantity():void{
+    if(this.quantity>0){
+      this.quantity--;
+      this.quantityChange.emit(this.quantity);
     }
   }
-  changeQuantity(event:KeyboardEvent, game: Game): void{
-    console.log(event.key);
+  changeQuantity(): void{
+    if (!this.quantity || isNaN(this.quantity)) {
+      this.quantity = 0;
+      this.quantityChange.emit(this.quantity);
+    } else if (this.quantity > this.max) {
+      this.quantity = this.max;
+      this.quantityChange.emit(this.quantity);
+    } else if (this.quantity < 0) {
+      this.quantity = 0;
+      this.quantityChange.emit(this.quantity);
+    }
   
   }
 }
