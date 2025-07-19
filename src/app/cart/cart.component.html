@@ -1,9 +1,16 @@
 <h2>Carrito de compras</h2>
-<ul>
+<button *ngIf="(cartList$ | async)?.length" (click)="clearCart()" class="btn btn-sm btn-dark my-4">
+    Vaciar Carrito
+</button>
+<ul class="my-2">
     <li *ngFor="let game of cartList$ | async">
-        {{game.name}} : {{game.quantity}}
-        <button class="btn btn-sm btn-dark" >
+        {{game.name}} x {{game.quantity}} = {{game.price * game.quantity | currency :'AR$'}}
+        <button class="btn btn-sm btn-dark" (click)="deleteFromCart(game)">
             Eliminar
         </button>
     </li>
 </ul>
+<div *ngIf="(cartList$ | async)?.length" class="my-5">
+    <h4>Total = {{(getTotal(cartList$ | async) |currency:'AR$')}}</h4>
+    <button class="btn btn-dark">Comprar</button>
+</div>

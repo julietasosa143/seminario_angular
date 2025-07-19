@@ -1,6 +1,6 @@
 # Tienda de Juegos de Mesa - Tokens & Treasures - Angular
 
-Este proyecto consiste en una aplicación desarrollada en Angular que simula una tienda de juegos de mesa. Los usuarios pueden ver un catálogo de juegos disponibles, verificar su stock, seleccionar la cantidad deseada y agregarlos a un carrito de compras.
+Este proyecto consiste en una aplicación desarrollada en Angular que simula una tienda de juegos de mesa. Los usuarios pueden ver un catálogo de juegos disponibles, verificar su stock, seleccionar la cantidad deseada, agregarlos a un carrito de compras, poder eliminar por item o vaciar el carrito manteniendo el stock actualizado.
 
 ## Temática del Proyecto
 

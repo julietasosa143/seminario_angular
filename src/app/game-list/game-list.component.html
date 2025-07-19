@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor=" let game of games" [ngClass]="{'clearance': game.clearance}">
+        <tr *ngFor=" let game of games$ | async" [ngClass]="{'clearance': game.clearance}">
             <td ><img class="img-thumbnail" [src]="game.image" [alt]="game.image" width="100"></td>
             <td>{{game.name}}</td>
             <td>{{game.description}}</td>
